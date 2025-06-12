@@ -20,11 +20,11 @@ function LoginPage() {
         withCredentials: true,
       })
       .then((res) => {
-        if (res.data === "로그인 성공") {
+        if (res.data && res.data.email === email) {
           sessionStorage.setItem("user", email);
           navigate("/TodoList");
         } else {
-          alert(res.data);
+          alert("이메일 또는 비밀번호가 일치하지 않습니다.");
         }
       })
       .catch(() => {
